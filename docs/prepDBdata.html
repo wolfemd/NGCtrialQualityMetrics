@@ -17,7 +17,7 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/darkly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -25,27 +25,102 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
+
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -506,10 +581,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong7a63ea9"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 7a63ea9 </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong1cafb30"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 1cafb30 </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong7a63ea9" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrong1cafb30" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -519,18 +594,37 @@ Ignored files:
     Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/.DS_Store
     Ignored:    data/.DS_Store
 
 Untracked files:
+    Untracked:  Icon
+    Untracked:  analysis/Icon
+    Untracked:  code/Icon
     Untracked:  data/2013_2020_Metadata.csv
     Untracked:  data/2013_2020_Metadata.xls
     Untracked:  data/2013_2020_phenotype_download.csv
     Untracked:  data/2020-02-27T063758phenotype_download.csv
     Untracked:  data/2020-02-27T063758phenotype_download.csv.zip
+    Untracked:  data/Icon
     Untracked:  data/NextGen_CleanedTrialData_20200227.rds
     Untracked:  data/NextGen_ExptDesignsDetected_20200227.rds
+    Untracked:  output/Icon
     Untracked:  output/NextGen_ModelsFit_20200228.rds
     Untracked:  workflowr_log.R
+
+Unstaged changes:
+    Modified:   .Rprofile
+    Modified:   .gitattributes
+    Modified:   .gitignore
+    Modified:   NGCtrialQualityMetrics.Rproj
+    Modified:   README.md
+    Modified:   _workflowr.yml
+    Modified:   analysis/about.Rmd
+    Modified:   analysis/license.Rmd
+    Modified:   code/README.md
+    Modified:   data/README.md
+    Modified:   output/README.md
 
 </code></pre>
 <p>
@@ -574,6 +668,40 @@ Message
 Rmd
 </td>
 <td>
+1cafb30
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-02-28
+</td>
+<td>
+Update style and navigation
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+6b4cfe2
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-02-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 7a63ea9
 </td>
 <td>
@@ -595,117 +723,117 @@ Publish analyses for NGC quality metrics.
 </div>
 <div id="read-in-data" class="section level3">
 <h3>Read-in data</h3>
-<pre class="r"><code>library(tidyverse); library(magrittr)</code></pre>
-<pre class="r"><code>readDBdata&lt;-function(phenotypeFile,metadataFile){
-      pheno&lt;-read.csv(phenotypeFile,na.strings = c(&quot;#VALUE!&quot;,NA,&quot;.&quot;,&quot;&quot;,&quot; &quot;,&quot;-&quot;,&quot;\&quot;&quot;,&quot;NANA&quot;,&quot;..&quot;,&quot;;&quot;),
-                      stringsAsFactors = F) %&gt;% 
-        mutate_at(vars(contains(&quot;CO_334&quot;)),~as.numeric(.))
-      meta&lt;-read.csv(metadataFile,
-                     na.strings = c(&quot;#VALUE!&quot;,NA,&quot;.&quot;,&quot;&quot;,&quot; &quot;,&quot;-&quot;,&quot;\&quot;&quot;,&quot;NANA&quot;,&quot;..&quot;,&quot;;&quot;),
-                     stringsAsFactors = F) %&gt;% 
-            rename(programName=breedingProgramName,
-                   programDescription=breedingProgramDescription,
-                   programDbId=breedingProgramDbId)
-      indata&lt;-left_join(pheno,meta) %&gt;% 
-            filter(observationLevel==&quot;plot&quot;)
-      return(indata) }    </code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>readDBdata&lt;-<span class="cf">function</span>(phenotypeFile,metadataFile){</span>
+<span id="cb2-2"><a href="#cb2-2"></a>      pheno&lt;-<span class="kw">read.csv</span>(phenotypeFile,<span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;#VALUE!&quot;</span>,<span class="ot">NA</span>,<span class="st">&quot;.&quot;</span>,<span class="st">&quot;&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;-&quot;</span>,<span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,<span class="st">&quot;NANA&quot;</span>,<span class="st">&quot;..&quot;</span>,<span class="st">&quot;;&quot;</span>),</span>
+<span id="cb2-3"><a href="#cb2-3"></a>                      <span class="dt">stringsAsFactors =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="st">        </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="kw">contains</span>(<span class="st">&quot;CO_334&quot;</span>)),<span class="op">~</span><span class="kw">as.numeric</span>(.))</span>
+<span id="cb2-5"><a href="#cb2-5"></a>      meta&lt;-<span class="kw">read.csv</span>(metadataFile,</span>
+<span id="cb2-6"><a href="#cb2-6"></a>                     <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;#VALUE!&quot;</span>,<span class="ot">NA</span>,<span class="st">&quot;.&quot;</span>,<span class="st">&quot;&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;-&quot;</span>,<span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>,<span class="st">&quot;NANA&quot;</span>,<span class="st">&quot;..&quot;</span>,<span class="st">&quot;;&quot;</span>),</span>
+<span id="cb2-7"><a href="#cb2-7"></a>                     <span class="dt">stringsAsFactors =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="st">            </span><span class="kw">rename</span>(<span class="dt">programName=</span>breedingProgramName,</span>
+<span id="cb2-9"><a href="#cb2-9"></a>                   <span class="dt">programDescription=</span>breedingProgramDescription,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>                   <span class="dt">programDbId=</span>breedingProgramDbId)</span>
+<span id="cb2-11"><a href="#cb2-11"></a>      indata&lt;-<span class="kw">left_join</span>(pheno,meta) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="st">            </span><span class="kw">filter</span>(observationLevel<span class="op">==</span><span class="st">&quot;plot&quot;</span>)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>      <span class="kw">return</span>(indata) }    </span></code></pre></div>
 <p>Converted <strong>2013_2020_Metadata.xls</strong> manually to CSV. I also manually removed 3 header rows, from it, which break my code. In my previous downloads there were none…? I think those meta data are not used much downstream, but standard part of my code.</p>
 <p>I repeatedly had problems with variables reading as character because of values I hadn’t anticipated. I added 3 new kinds of <code>na.strings</code> argument above: “NANA”,“..”,“;”.</p>
-<pre class="r"><code>phenotypeFile&lt;-here::here(&quot;data&quot;,&quot;2020-02-27T063758phenotype_download.csv&quot;)
-metadataFile&lt;-here::here(&quot;data&quot;,&quot;2013_2020_Metadata.csv&quot;)
-
-dbdata&lt;-readDBdata(phenotypeFile,metadataFile)</code></pre>
-<pre class="r"><code>rm(x); gc()</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>phenotypeFile&lt;-here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;2020-02-27T063758phenotype_download.csv&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>metadataFile&lt;-here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;2013_2020_Metadata.csv&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>dbdata&lt;-<span class="kw">readDBdata</span>(phenotypeFile,metadataFile)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">rm</span>(x); <span class="kw">gc</span>()</span></code></pre></div>
 <pre><code>            used   (Mb) gc trigger   (Mb) limit (Mb)  max used   (Mb)
-Ncells   2032460  108.6    4518647  241.4         NA   3250974  173.7
-Vcells 345532298 2636.3  645584351 4925.5     102400 548108030 4181.8</code></pre>
-<pre class="r"><code>tibble(Cols=colnames(dbdata)) %&gt;% 
-  mutate(Class=map_chr(Cols,~class(dbdata[,.]))) %&gt;% 
-  filter(grepl(&quot;CO_334&quot;,Cols),
-         Class==&quot;character&quot;)</code></pre>
+Ncells   2032425  108.6    4518618  241.4         NA   3240534  173.1
+Vcells 345532451 2636.3  644573489 4917.8     102400 548108183 4181.8</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">tibble</span>(<span class="dt">Cols=</span><span class="kw">colnames</span>(dbdata)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Class=</span><span class="kw">map_chr</span>(Cols,<span class="op">~</span><span class="kw">class</span>(dbdata[,.]))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">grepl</span>(<span class="st">&quot;CO_334&quot;</span>,Cols),</span>
+<span id="cb6-4"><a href="#cb6-4"></a>         Class<span class="op">==</span><span class="st">&quot;character&quot;</span>)</span></code></pre></div>
 <pre><code># A tibble: 0 x 2
 # … with 2 variables: Cols &lt;chr&gt;, Class &lt;chr&gt;</code></pre>
-<pre class="r"><code>dim(dbdata)</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">dim</span>(dbdata)</span></code></pre></div>
 <pre><code>[1] 421269    281</code></pre>
 <p>~421K obs!</p>
 <p><strong>NOTE:</strong> 770K input observations, plant-basis data?</p>
 </div>
 <div id="trialtype-variable" class="section level2">
 <h2>TrialType Variable</h2>
-<pre class="r"><code>makeTrialTypeVar&lt;-function(indata){
-  # This is customized to NextGen datasets I have encountered thus far
-  outdata&lt;-indata %&gt;% 
-    filter(programName==&quot;NaCRRI&quot;) %&gt;% 
-    mutate(TrialType=ifelse(grepl(&quot;ProVitamin-A|pVAC|TCC&quot;,studyName),&quot;ProVitaminA&quot;,NA),
-           TrialType=ifelse(grepl(&quot;CBSD_GxE&quot;,studyName),&quot;CBSD_GxE&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;Flowering_GxE&quot;,studyName),&quot;Flowering_GxE&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;training&quot;,studyName,ignore.case = T),&quot;GS_TrainingPopulation&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;GWAS_Farmer&quot;,studyName),&quot;FarmerTraits_GWAS&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;Cassava GWAS&quot;,studyName),&quot;CBSD_GWAS&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;C0_2017&quot;,studyName),&quot;GS_C0_UYT&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;C1&quot;,studyName),&quot;GS_C1&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;IITA_Clones&quot;,studyName),&quot;IITA_Clones&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;C2_Parents&quot;,studyName),&quot;GS_ParentsOfC2&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;Protocol_Optimization&quot;,studyName),&quot;Protocol_Optimization&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;AYT_b_&quot;,studyName),&quot;AYT_b&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;Genetic_Gain&quot;,studyName),&quot;Genetic_Gain&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;UYT_White&quot;,studyName),&quot;UYT_White&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;UYT_Yellow&quot;,studyName),&quot;UYT_Yellow&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;LA_Selections&quot;,studyName),&quot;LA_Selections&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;WA_Selections&quot;,studyName),&quot;WA_Selections&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;RTB_&quot;,studyName),&quot;RTB&quot;,TrialType),
-           TrialType=ifelse(grepl(&quot;PVS&quot;,studyName),&quot;PV&quot;,TrialType)) %&gt;% 
-    bind_rows(dbdata %&gt;% 
-                filter(programName==&quot;NRCRI&quot;) %&gt;% 
-                mutate(TrialType=ifelse(grepl(&quot;TP1&quot;,studyName,ignore.case = T),&quot;TP1&quot;,NA),
-                       TrialType=ifelse(grepl(&quot;TP2&quot;,studyName,ignore.case = T),&quot;TP2&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;C1a&quot;,studyName,ignore.case = T),&quot;C1a&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;C1b&quot;,studyName,ignore.case = T),&quot;C1b&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;C2a&quot;,studyName,ignore.case = T),&quot;C2a&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;15nextgen60gs-cbUM&quot;,studyName,ignore.case = T),&quot;CrossingBlock&quot;,TrialType))) %&gt;% 
-    bind_rows(dbdata %&gt;% 
-                filter(programName==&quot;IITA&quot;) %&gt;% 
-                mutate(TrialType=ifelse(grepl(&quot;CE|clonal|13NEXTgenC1&quot;,studyName,ignore.case = T),&quot;CET&quot;,NA),
-                       TrialType=ifelse(grepl(&quot;EC&quot;,studyName,ignore.case = T),&quot;ExpCET&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;PYT&quot;,studyName,ignore.case = T),&quot;PYT&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;AYT&quot;,studyName,ignore.case = T),&quot;AYT&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;UYT&quot;,studyName,ignore.case = T),&quot;UYT&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;geneticgain|gg|genetic gain&quot;,studyName,ignore.case = T),&quot;GeneticGain&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;Cassava&quot;,studyName,ignore.case = T) &amp; grepl(&quot;/&quot;,studyName),&quot;GeneticGain&quot;,TrialType),
-                       # TrialType=ifelse((grepl(&quot;clonal evaluation trial&quot;,!grepl(&quot;genetic gain&quot;,studyDescription,ignore.case = T), 
-                       #                         ignore.case = T)),&quot;CET&quot;,TrialType),
-                       #TrialType=ifelse(grepl(&quot;preliminary yield trial&quot;,studyDescription,ignore.case = T),&quot;PYT&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;Crossingblock|GS.C4.CB|cross&quot;,studyName) &amp; is.na(TrialType),
-                                        &quot;CrossingBlock&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;NCRP&quot;,studyName) &amp; is.na(TrialType),&quot;NCRP&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;conservation&quot;,studyName) &amp; is.na(TrialType),&quot;Conservation&quot;,TrialType))) %&gt;% 
-    bind_rows(dbdata %&gt;% 
-                filter(programName==&quot;TARI&quot;) %&gt;%
-                mutate(TrialType=ifelse(!grepl(&quot;CET&quot;,studyName,ignore.case = T),&quot;CET&quot;,NA),
-                       TrialType=ifelse(!grepl(&quot;PYT&quot;,studyName,ignore.case = T),&quot;PYT&quot;,TrialType),
-                       TrialType=ifelse(!grepl(&quot;AYT&quot;,studyName,ignore.case = T),&quot;AYT&quot;,TrialType),
-                       TrialType=ifelse(!grepl(&quot;UYT&quot;,studyName,ignore.case = T),&quot;UYT&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;crossing&quot;,studyName,ignore.case = T),&quot;CrossingBlock&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;5CP&quot;,studyName,ignore.case = T),&quot;5CP&quot;,TrialType))) %&gt;% 
-    bind_rows(dbdata %&gt;% 
-                filter(programName==&quot;Embrapa&quot;) %&gt;% 
-                mutate(TrialType=ifelse(grepl(&quot;CET&quot;,studyName,ignore.case = T),&quot;CET&quot;,NA),
-                       TrialType=ifelse(grepl(&quot;PYT&quot;,studyName,ignore.case = T),&quot;PYT&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;AYT&quot;,studyName,ignore.case = T),&quot;AYT&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;UYT&quot;,studyName,ignore.case = T),&quot;UYT&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;RT&quot;,studyName,ignore.case = T),&quot;RegionalTrials&quot;,TrialType),
-                       TrialType=ifelse(trialType==&quot;Seedling Nursery&quot;,&quot;SN&quot;,TrialType),
-                       TrialType=ifelse(trialType==&quot;phenotyping_trial&quot;,&quot;phenotyping_trial&quot;,TrialType),
-                       TrialType=ifelse(trialType==&quot;Seed Multiplication&quot;,&quot;SeedMultiplication&quot;,TrialType),
-                       TrialType=ifelse(trialType==&quot;crossing_block_trial&quot;,&quot;CrossingBlock&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;AYT&quot;,studyName,ignore.case = T),&quot;AYT&quot;,TrialType),
-                       TrialType=ifelse(grepl(&quot;UYT&quot;,studyName,ignore.case = T),&quot;UYT&quot;,TrialType))) %&gt;% 
-  arrange(programName,studyYear,locationName)
-  return(outdata) }</code></pre>
-<pre class="r"><code>dbdata&lt;-makeTrialTypeVar(dbdata) 
-dbdata %&gt;% 
-  count(programName,TrialType) %&gt;% 
-  rmarkdown::paged_table()</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>makeTrialTypeVar&lt;-<span class="cf">function</span>(indata){</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="co"># This is customized to NextGen datasets I have encountered thus far</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  outdata&lt;-indata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="st">    </span><span class="kw">filter</span>(programName<span class="op">==</span><span class="st">&quot;NaCRRI&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;ProVitamin-A|pVAC|TCC&quot;</span>,studyName),<span class="st">&quot;ProVitaminA&quot;</span>,<span class="ot">NA</span>),</span>
+<span id="cb10-6"><a href="#cb10-6"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;CBSD_GxE&quot;</span>,studyName),<span class="st">&quot;CBSD_GxE&quot;</span>,TrialType),</span>
+<span id="cb10-7"><a href="#cb10-7"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;Flowering_GxE&quot;</span>,studyName),<span class="st">&quot;Flowering_GxE&quot;</span>,TrialType),</span>
+<span id="cb10-8"><a href="#cb10-8"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;training&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;GS_TrainingPopulation&quot;</span>,TrialType),</span>
+<span id="cb10-9"><a href="#cb10-9"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;GWAS_Farmer&quot;</span>,studyName),<span class="st">&quot;FarmerTraits_GWAS&quot;</span>,TrialType),</span>
+<span id="cb10-10"><a href="#cb10-10"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;Cassava GWAS&quot;</span>,studyName),<span class="st">&quot;CBSD_GWAS&quot;</span>,TrialType),</span>
+<span id="cb10-11"><a href="#cb10-11"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;C0_2017&quot;</span>,studyName),<span class="st">&quot;GS_C0_UYT&quot;</span>,TrialType),</span>
+<span id="cb10-12"><a href="#cb10-12"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;C1&quot;</span>,studyName),<span class="st">&quot;GS_C1&quot;</span>,TrialType),</span>
+<span id="cb10-13"><a href="#cb10-13"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;IITA_Clones&quot;</span>,studyName),<span class="st">&quot;IITA_Clones&quot;</span>,TrialType),</span>
+<span id="cb10-14"><a href="#cb10-14"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;C2_Parents&quot;</span>,studyName),<span class="st">&quot;GS_ParentsOfC2&quot;</span>,TrialType),</span>
+<span id="cb10-15"><a href="#cb10-15"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;Protocol_Optimization&quot;</span>,studyName),<span class="st">&quot;Protocol_Optimization&quot;</span>,TrialType),</span>
+<span id="cb10-16"><a href="#cb10-16"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;AYT_b_&quot;</span>,studyName),<span class="st">&quot;AYT_b&quot;</span>,TrialType),</span>
+<span id="cb10-17"><a href="#cb10-17"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;Genetic_Gain&quot;</span>,studyName),<span class="st">&quot;Genetic_Gain&quot;</span>,TrialType),</span>
+<span id="cb10-18"><a href="#cb10-18"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;UYT_White&quot;</span>,studyName),<span class="st">&quot;UYT_White&quot;</span>,TrialType),</span>
+<span id="cb10-19"><a href="#cb10-19"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;UYT_Yellow&quot;</span>,studyName),<span class="st">&quot;UYT_Yellow&quot;</span>,TrialType),</span>
+<span id="cb10-20"><a href="#cb10-20"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;LA_Selections&quot;</span>,studyName),<span class="st">&quot;LA_Selections&quot;</span>,TrialType),</span>
+<span id="cb10-21"><a href="#cb10-21"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;WA_Selections&quot;</span>,studyName),<span class="st">&quot;WA_Selections&quot;</span>,TrialType),</span>
+<span id="cb10-22"><a href="#cb10-22"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;RTB_&quot;</span>,studyName),<span class="st">&quot;RTB&quot;</span>,TrialType),</span>
+<span id="cb10-23"><a href="#cb10-23"></a>           <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;PVS&quot;</span>,studyName),<span class="st">&quot;PV&quot;</span>,TrialType)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-24"><a href="#cb10-24"></a><span class="st">    </span><span class="kw">bind_rows</span>(dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-25"><a href="#cb10-25"></a><span class="st">                </span><span class="kw">filter</span>(programName<span class="op">==</span><span class="st">&quot;NRCRI&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-26"><a href="#cb10-26"></a><span class="st">                </span><span class="kw">mutate</span>(<span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;TP1&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;TP1&quot;</span>,<span class="ot">NA</span>),</span>
+<span id="cb10-27"><a href="#cb10-27"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;TP2&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;TP2&quot;</span>,TrialType),</span>
+<span id="cb10-28"><a href="#cb10-28"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;C1a&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;C1a&quot;</span>,TrialType),</span>
+<span id="cb10-29"><a href="#cb10-29"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;C1b&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;C1b&quot;</span>,TrialType),</span>
+<span id="cb10-30"><a href="#cb10-30"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;C2a&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;C2a&quot;</span>,TrialType),</span>
+<span id="cb10-31"><a href="#cb10-31"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;15nextgen60gs-cbUM&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;CrossingBlock&quot;</span>,TrialType))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-32"><a href="#cb10-32"></a><span class="st">    </span><span class="kw">bind_rows</span>(dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-33"><a href="#cb10-33"></a><span class="st">                </span><span class="kw">filter</span>(programName<span class="op">==</span><span class="st">&quot;IITA&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-34"><a href="#cb10-34"></a><span class="st">                </span><span class="kw">mutate</span>(<span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;CE|clonal|13NEXTgenC1&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;CET&quot;</span>,<span class="ot">NA</span>),</span>
+<span id="cb10-35"><a href="#cb10-35"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;EC&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;ExpCET&quot;</span>,TrialType),</span>
+<span id="cb10-36"><a href="#cb10-36"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;PYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;PYT&quot;</span>,TrialType),</span>
+<span id="cb10-37"><a href="#cb10-37"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;AYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;AYT&quot;</span>,TrialType),</span>
+<span id="cb10-38"><a href="#cb10-38"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;UYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;UYT&quot;</span>,TrialType),</span>
+<span id="cb10-39"><a href="#cb10-39"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;geneticgain|gg|genetic gain&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;GeneticGain&quot;</span>,TrialType),</span>
+<span id="cb10-40"><a href="#cb10-40"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;Cassava&quot;</span>,studyName,<span class="dt">ignore.case =</span> T) <span class="op">&amp;</span><span class="st"> </span><span class="kw">grepl</span>(<span class="st">&quot;/&quot;</span>,studyName),<span class="st">&quot;GeneticGain&quot;</span>,TrialType),</span>
+<span id="cb10-41"><a href="#cb10-41"></a>                       <span class="co"># TrialType=ifelse((grepl(&quot;clonal evaluation trial&quot;,!grepl(&quot;genetic gain&quot;,studyDescription,ignore.case = T), </span></span>
+<span id="cb10-42"><a href="#cb10-42"></a>                       <span class="co">#                         ignore.case = T)),&quot;CET&quot;,TrialType),</span></span>
+<span id="cb10-43"><a href="#cb10-43"></a>                       <span class="co">#TrialType=ifelse(grepl(&quot;preliminary yield trial&quot;,studyDescription,ignore.case = T),&quot;PYT&quot;,TrialType),</span></span>
+<span id="cb10-44"><a href="#cb10-44"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;Crossingblock|GS.C4.CB|cross&quot;</span>,studyName) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.na</span>(TrialType),</span>
+<span id="cb10-45"><a href="#cb10-45"></a>                                        <span class="st">&quot;CrossingBlock&quot;</span>,TrialType),</span>
+<span id="cb10-46"><a href="#cb10-46"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;NCRP&quot;</span>,studyName) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.na</span>(TrialType),<span class="st">&quot;NCRP&quot;</span>,TrialType),</span>
+<span id="cb10-47"><a href="#cb10-47"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;conservation&quot;</span>,studyName) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.na</span>(TrialType),<span class="st">&quot;Conservation&quot;</span>,TrialType))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-48"><a href="#cb10-48"></a><span class="st">    </span><span class="kw">bind_rows</span>(dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-49"><a href="#cb10-49"></a><span class="st">                </span><span class="kw">filter</span>(programName<span class="op">==</span><span class="st">&quot;TARI&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb10-50"><a href="#cb10-50"></a><span class="st">                </span><span class="kw">mutate</span>(<span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&quot;CET&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;CET&quot;</span>,<span class="ot">NA</span>),</span>
+<span id="cb10-51"><a href="#cb10-51"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&quot;PYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;PYT&quot;</span>,TrialType),</span>
+<span id="cb10-52"><a href="#cb10-52"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&quot;AYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;AYT&quot;</span>,TrialType),</span>
+<span id="cb10-53"><a href="#cb10-53"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="st">&quot;UYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;UYT&quot;</span>,TrialType),</span>
+<span id="cb10-54"><a href="#cb10-54"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;crossing&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;CrossingBlock&quot;</span>,TrialType),</span>
+<span id="cb10-55"><a href="#cb10-55"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;5CP&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;5CP&quot;</span>,TrialType))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-56"><a href="#cb10-56"></a><span class="st">    </span><span class="kw">bind_rows</span>(dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-57"><a href="#cb10-57"></a><span class="st">                </span><span class="kw">filter</span>(programName<span class="op">==</span><span class="st">&quot;Embrapa&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-58"><a href="#cb10-58"></a><span class="st">                </span><span class="kw">mutate</span>(<span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;CET&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;CET&quot;</span>,<span class="ot">NA</span>),</span>
+<span id="cb10-59"><a href="#cb10-59"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;PYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;PYT&quot;</span>,TrialType),</span>
+<span id="cb10-60"><a href="#cb10-60"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;AYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;AYT&quot;</span>,TrialType),</span>
+<span id="cb10-61"><a href="#cb10-61"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;UYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;UYT&quot;</span>,TrialType),</span>
+<span id="cb10-62"><a href="#cb10-62"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;RT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;RegionalTrials&quot;</span>,TrialType),</span>
+<span id="cb10-63"><a href="#cb10-63"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(trialType<span class="op">==</span><span class="st">&quot;Seedling Nursery&quot;</span>,<span class="st">&quot;SN&quot;</span>,TrialType),</span>
+<span id="cb10-64"><a href="#cb10-64"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(trialType<span class="op">==</span><span class="st">&quot;phenotyping_trial&quot;</span>,<span class="st">&quot;phenotyping_trial&quot;</span>,TrialType),</span>
+<span id="cb10-65"><a href="#cb10-65"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(trialType<span class="op">==</span><span class="st">&quot;Seed Multiplication&quot;</span>,<span class="st">&quot;SeedMultiplication&quot;</span>,TrialType),</span>
+<span id="cb10-66"><a href="#cb10-66"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(trialType<span class="op">==</span><span class="st">&quot;crossing_block_trial&quot;</span>,<span class="st">&quot;CrossingBlock&quot;</span>,TrialType),</span>
+<span id="cb10-67"><a href="#cb10-67"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;AYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;AYT&quot;</span>,TrialType),</span>
+<span id="cb10-68"><a href="#cb10-68"></a>                       <span class="dt">TrialType=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;UYT&quot;</span>,studyName,<span class="dt">ignore.case =</span> T),<span class="st">&quot;UYT&quot;</span>,TrialType))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb10-69"><a href="#cb10-69"></a><span class="st">  </span><span class="kw">arrange</span>(programName,studyYear,locationName)</span>
+<span id="cb10-70"><a href="#cb10-70"></a>  <span class="kw">return</span>(outdata) }</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>dbdata&lt;-<span class="kw">makeTrialTypeVar</span>(dbdata) </span>
+<span id="cb11-2"><a href="#cb11-2"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="st">  </span><span class="kw">count</span>(programName,TrialType) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="st">  </span>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["programName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["TrialType"],"name":[2],"type":["chr"],"align":["left"]},{"label":["n"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Embrapa","2":"AYT","3":"270"},{"1":"Embrapa","2":"UYT","3":"267"},{"1":"Embrapa","2":"NA","3":"13148"},{"1":"IITA","2":"AYT","3":"18303"},{"1":"IITA","2":"CET","3":"47103"},{"1":"IITA","2":"Conservation","3":"997"},{"1":"IITA","2":"CrossingBlock","3":"1302"},{"1":"IITA","2":"ExpCET","3":"1865"},{"1":"IITA","2":"GeneticGain","3":"9017"},{"1":"IITA","2":"NCRP","3":"2016"},{"1":"IITA","2":"PYT","3":"30983"},{"1":"IITA","2":"UYT","3":"11642"},{"1":"IITA","2":"NA","3":"158351"},{"1":"NaCRRI","2":"AYT_b","3":"90"},{"1":"NaCRRI","2":"CBSD_GWAS","3":"4159"},{"1":"NaCRRI","2":"CBSD_GxE","3":"5071"},{"1":"NaCRRI","2":"FarmerTraits_GWAS","3":"2028"},{"1":"NaCRRI","2":"Flowering_GxE","3":"604"},{"1":"NaCRRI","2":"Genetic_Gain","3":"186"},{"1":"NaCRRI","2":"GS_C0_UYT","3":"186"},{"1":"NaCRRI","2":"GS_C1","3":"9352"},{"1":"NaCRRI","2":"GS_ParentsOfC2","3":"208"},{"1":"NaCRRI","2":"GS_TrainingPopulation","3":"3843"},{"1":"NaCRRI","2":"IITA_Clones","3":"122"},{"1":"NaCRRI","2":"LA_Selections","3":"483"},{"1":"NaCRRI","2":"Protocol_Optimization","3":"1031"},{"1":"NaCRRI","2":"ProVitaminA","3":"4164"},{"1":"NaCRRI","2":"PV","3":"32"},{"1":"NaCRRI","2":"RTB","3":"318"},{"1":"NaCRRI","2":"UYT_White","3":"154"},{"1":"NaCRRI","2":"UYT_Yellow","3":"92"},{"1":"NaCRRI","2":"WA_Selections","3":"1211"},{"1":"NaCRRI","2":"NA","3":"33162"},{"1":"NRCRI","2":"C1a","3":"3382"},{"1":"NRCRI","2":"C1b","3":"3999"},{"1":"NRCRI","2":"C2a","3":"2980"},{"1":"NRCRI","2":"TP1","3":"11728"},{"1":"NRCRI","2":"TP2","3":"8993"},{"1":"NRCRI","2":"NA","3":"14956"},{"1":"TARI","2":"5CP","3":"42"},{"1":"TARI","2":"AYT","3":"1030"},{"1":"TARI","2":"CrossingBlock","3":"392"},{"1":"TARI","2":"UYT","3":"12007"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -715,67 +843,67 @@ dbdata %&gt;%
 <div id="traits-and-traitabbreviations" class="section level2">
 <h2>Traits and TraitAbbreviations</h2>
 <p>Function to rename columns and remove everything unecessary</p>
-<pre class="r"><code>renameAndSelectCols&lt;-function(traitabbrevs,indata,
-                              customColsToKeep){
-  # @indata: data.frame with 2 cols (TraitAbbrev and TraitName)
-  ### TraitName should match exactly to cassava ontology names
-  # @customColsToKeep: char. vec. of any custom cols you added and want to keep
-  #table(colnames(indata) %in% traitabbrevs$TraitName)
-  outdata&lt;-indata %&gt;% 
-    dplyr::select(studyYear,programName,locationName,studyName,studyDesign,plotWidth,plotLength,fieldSize,
-           plantingDate,harvestDate,locationName,germplasmName,observationUnitName,
-           replicate,blockNumber,plotNumber,rowNumber,colNumber,entryType, 
-           trialType:numberReps,folderName,
-           all_of(customColsToKeep), 
-           all_of(traitabbrevs$TraitName))
-  #table(colnames(outdata) %in% traitabbrevs$TraitName)
-  #outdata %&gt;% str
-  outdata&lt;-outdata %&gt;% 
-    pivot_longer(cols = traitabbrevs$TraitName,
-                 names_to = &quot;TraitName&quot;,
-                 values_to = &quot;Value&quot;)
-    outdata&lt;-outdata %&gt;% 
-      left_join(.,traitabbrevs) 
-    #z %&gt;% count(TraitAbbrev,TraitName)
-    outdata&lt;-outdata %&gt;% 
-      dplyr::select(-TraitName) %&gt;% 
-      pivot_wider(names_from = &quot;TraitAbbrev&quot;,
-                  values_from = &quot;Value&quot;)
-  return(outdata) }</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>renameAndSelectCols&lt;-<span class="cf">function</span>(traitabbrevs,indata,</span>
+<span id="cb12-2"><a href="#cb12-2"></a>                              customColsToKeep){</span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="co"># @indata: data.frame with 2 cols (TraitAbbrev and TraitName)</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="co">### TraitName should match exactly to cassava ontology names</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="co"># @customColsToKeep: char. vec. of any custom cols you added and want to keep</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="co">#table(colnames(indata) %in% traitabbrevs$TraitName)</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  outdata&lt;-indata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(studyYear,programName,locationName,studyName,studyDesign,plotWidth,plotLength,fieldSize,</span>
+<span id="cb12-9"><a href="#cb12-9"></a>           plantingDate,harvestDate,locationName,germplasmName,observationUnitName,</span>
+<span id="cb12-10"><a href="#cb12-10"></a>           replicate,blockNumber,plotNumber,rowNumber,colNumber,entryType, </span>
+<span id="cb12-11"><a href="#cb12-11"></a>           trialType<span class="op">:</span>numberReps,folderName,</span>
+<span id="cb12-12"><a href="#cb12-12"></a>           <span class="kw">all_of</span>(customColsToKeep), </span>
+<span id="cb12-13"><a href="#cb12-13"></a>           <span class="kw">all_of</span>(traitabbrevs<span class="op">$</span>TraitName))</span>
+<span id="cb12-14"><a href="#cb12-14"></a>  <span class="co">#table(colnames(outdata) %in% traitabbrevs$TraitName)</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>  <span class="co">#outdata %&gt;% str</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>  outdata&lt;-outdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="st">    </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> traitabbrevs<span class="op">$</span>TraitName,</span>
+<span id="cb12-18"><a href="#cb12-18"></a>                 <span class="dt">names_to =</span> <span class="st">&quot;TraitName&quot;</span>,</span>
+<span id="cb12-19"><a href="#cb12-19"></a>                 <span class="dt">values_to =</span> <span class="st">&quot;Value&quot;</span>)</span>
+<span id="cb12-20"><a href="#cb12-20"></a>    outdata&lt;-outdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="st">      </span><span class="kw">left_join</span>(.,traitabbrevs) </span>
+<span id="cb12-22"><a href="#cb12-22"></a>    <span class="co">#z %&gt;% count(TraitAbbrev,TraitName)</span></span>
+<span id="cb12-23"><a href="#cb12-23"></a>    outdata&lt;-outdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb12-24"><a href="#cb12-24"></a><span class="st">      </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>TraitName) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb12-25"><a href="#cb12-25"></a><span class="st">      </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> <span class="st">&quot;TraitAbbrev&quot;</span>,</span>
+<span id="cb12-26"><a href="#cb12-26"></a>                  <span class="dt">values_from =</span> <span class="st">&quot;Value&quot;</span>)</span>
+<span id="cb12-27"><a href="#cb12-27"></a>  <span class="kw">return</span>(outdata) }</span></code></pre></div>
 <p>Searching through the traits in the download</p>
-<pre class="r"><code>dbdata %&gt;% colnames %&gt;% grep(&quot;brown.streak.disease.leaf.severity&quot;,.,value = T, ignore.case = T)
-dbdata %&gt;% colnames %&gt;% grep(&quot;brown.streak&quot;,.,value = T, ignore.case = T)
-dbdata %&gt;% colnames %&gt;% grep(&quot;fresh.root&quot;,.,value = T, ignore.case = T)
-dbdata %&gt;% colnames %&gt;% grep(&quot;cassava.mosaic.disease.severity.1.month.evaluation.CO_334.0000191&quot;,.,value = T, ignore.case = T)
-summary(dbdata$cassava.mosaic.disease.severity.1.month.evaluation.CO_334.0000191)
-class(dbdata$cassava.mosaic.disease.severity.3.month.evaluation.CO_334.0000192)
-table(dbdata$cassava.mosaic.disease.severity.3.month.evaluation.CO_334.0000192)
-class(dbdata$cassava.mosaic.disease.severity.9.month.evaluation.CO_334.0000193)
-class(dbdata$cassava.mosaic.disease.severity.9.month.evaluation.CO_334.0000193)
-dbdata[,traitabbrevs$TraitName] %&gt;% str
-colnames(dbdata)
-table(dbdata$fresh.storage.root.weight.per.plot.CO_334.0000012)
-table(dbdata$cassava.brown.streak.disease.root.severity.12.month.evaluation.CO_334.0000201)</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span>colnames <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;brown.streak.disease.leaf.severity&quot;</span>,.,<span class="dt">value =</span> T, <span class="dt">ignore.case =</span> T)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span>colnames <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;brown.streak&quot;</span>,.,<span class="dt">value =</span> T, <span class="dt">ignore.case =</span> T)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span>colnames <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;fresh.root&quot;</span>,.,<span class="dt">value =</span> T, <span class="dt">ignore.case =</span> T)</span>
+<span id="cb13-4"><a href="#cb13-4"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span>colnames <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;cassava.mosaic.disease.severity.1.month.evaluation.CO_334.0000191&quot;</span>,.,<span class="dt">value =</span> T, <span class="dt">ignore.case =</span> T)</span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="kw">summary</span>(dbdata<span class="op">$</span>cassava.mosaic.disease.severity.<span class="fl">1.</span>month.evaluation.CO_<span class="fl">334.0000191</span>)</span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="kw">class</span>(dbdata<span class="op">$</span>cassava.mosaic.disease.severity.<span class="fl">3.</span>month.evaluation.CO_<span class="fl">334.0000192</span>)</span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="kw">table</span>(dbdata<span class="op">$</span>cassava.mosaic.disease.severity.<span class="fl">3.</span>month.evaluation.CO_<span class="fl">334.0000192</span>)</span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="kw">class</span>(dbdata<span class="op">$</span>cassava.mosaic.disease.severity.<span class="fl">9.</span>month.evaluation.CO_<span class="fl">334.0000193</span>)</span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="kw">class</span>(dbdata<span class="op">$</span>cassava.mosaic.disease.severity.<span class="fl">9.</span>month.evaluation.CO_<span class="fl">334.0000193</span>)</span>
+<span id="cb13-10"><a href="#cb13-10"></a>dbdata[,traitabbrevs<span class="op">$</span>TraitName] <span class="op">%&gt;%</span><span class="st"> </span>str</span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="kw">colnames</span>(dbdata)</span>
+<span id="cb13-12"><a href="#cb13-12"></a><span class="kw">table</span>(dbdata<span class="op">$</span>fresh.storage.root.weight.per.plot.CO_<span class="fl">334.0000012</span>)</span>
+<span id="cb13-13"><a href="#cb13-13"></a><span class="kw">table</span>(dbdata<span class="op">$</span>cassava.brown.streak.disease.root.severity.<span class="fl">12.</span>month.evaluation.CO_<span class="fl">334.0000201</span>)</span></code></pre></div>
 <p>Making a table of abbreviations for renaming</p>
-<pre class="r"><code>traitabbrevs&lt;-tribble(~TraitAbbrev,~TraitName,
-                      &quot;CMD1S&quot;,&quot;cassava.mosaic.disease.severity.1.month.evaluation.CO_334.0000191&quot;,
-                      &quot;CMD3S&quot;,&quot;cassava.mosaic.disease.severity.3.month.evaluation.CO_334.0000192&quot;,
-                      &quot;CMD6S&quot;,&quot;cassava.mosaic.disease.severity.6.month.evaluation.CO_334.0000194&quot;,
-                      &quot;CMD9S&quot;,&quot;cassava.mosaic.disease.severity.9.month.evaluation.CO_334.0000193&quot;,
-                      &quot;CBSD3S&quot;,&quot;cassava.brown.streak.disease.leaf.severity.3.month.evaluation.CO_334.0000204&quot;,
-                      &quot;CBSD6S&quot;,&quot;cassava.brown.streak.disease.leaf.severity.6.month.evaluation.CO_334.0000205&quot;,
-                      &quot;CBSD9S&quot;,&quot;cassava.brown.streak.disease.leaf.severity.9.month.evaluation.CO_334.0000206&quot;,
-                      &quot;CBSDRS&quot;,&quot;cassava.brown.streak.disease.root.severity.12.month.evaluation.CO_334.0000201&quot;,
-                      &quot;DM&quot;,&quot;dry.matter.content.percentage.CO_334.0000092&quot;,
-                      &quot;PLTHT&quot;,&quot;plant.height.measurement.in.cm.CO_334.0000018&quot;,
-                      &quot;BRNHT1&quot;,&quot;first.apical.branch.height.measurement.in.cm.CO_334.0000106&quot;,
-                      &quot;SHTWT&quot;,&quot;fresh.shoot.weight.measurement.in.kg.per.plot.CO_334.0000016&quot;,
-                      #&quot;FYLD&quot;,&quot;fresh.root.yield.CO_334.0000013&quot;,
-                      &quot;RTWT&quot;,&quot;fresh.storage.root.weight.per.plot.CO_334.0000012&quot;,
-                      &quot;RTNO&quot;,&quot;root.number.counting.CO_334.0000011&quot;,
-                      &quot;TCHART&quot;,&quot;total.carotenoid.by.chart.1.8.CO_334.0000161&quot;,
-                      &quot;NOHAV&quot;,&quot;plant.stands.harvested.counting.CO_334.0000010&quot;)</code></pre>
-<pre class="r"><code>knitr::kable(traitabbrevs,booktabs=TRUE)</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>traitabbrevs&lt;-<span class="kw">tribble</span>(<span class="op">~</span>TraitAbbrev,<span class="op">~</span>TraitName,</span>
+<span id="cb14-2"><a href="#cb14-2"></a>                      <span class="st">&quot;CMD1S&quot;</span>,<span class="st">&quot;cassava.mosaic.disease.severity.1.month.evaluation.CO_334.0000191&quot;</span>,</span>
+<span id="cb14-3"><a href="#cb14-3"></a>                      <span class="st">&quot;CMD3S&quot;</span>,<span class="st">&quot;cassava.mosaic.disease.severity.3.month.evaluation.CO_334.0000192&quot;</span>,</span>
+<span id="cb14-4"><a href="#cb14-4"></a>                      <span class="st">&quot;CMD6S&quot;</span>,<span class="st">&quot;cassava.mosaic.disease.severity.6.month.evaluation.CO_334.0000194&quot;</span>,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>                      <span class="st">&quot;CMD9S&quot;</span>,<span class="st">&quot;cassava.mosaic.disease.severity.9.month.evaluation.CO_334.0000193&quot;</span>,</span>
+<span id="cb14-6"><a href="#cb14-6"></a>                      <span class="st">&quot;CBSD3S&quot;</span>,<span class="st">&quot;cassava.brown.streak.disease.leaf.severity.3.month.evaluation.CO_334.0000204&quot;</span>,</span>
+<span id="cb14-7"><a href="#cb14-7"></a>                      <span class="st">&quot;CBSD6S&quot;</span>,<span class="st">&quot;cassava.brown.streak.disease.leaf.severity.6.month.evaluation.CO_334.0000205&quot;</span>,</span>
+<span id="cb14-8"><a href="#cb14-8"></a>                      <span class="st">&quot;CBSD9S&quot;</span>,<span class="st">&quot;cassava.brown.streak.disease.leaf.severity.9.month.evaluation.CO_334.0000206&quot;</span>,</span>
+<span id="cb14-9"><a href="#cb14-9"></a>                      <span class="st">&quot;CBSDRS&quot;</span>,<span class="st">&quot;cassava.brown.streak.disease.root.severity.12.month.evaluation.CO_334.0000201&quot;</span>,</span>
+<span id="cb14-10"><a href="#cb14-10"></a>                      <span class="st">&quot;DM&quot;</span>,<span class="st">&quot;dry.matter.content.percentage.CO_334.0000092&quot;</span>,</span>
+<span id="cb14-11"><a href="#cb14-11"></a>                      <span class="st">&quot;PLTHT&quot;</span>,<span class="st">&quot;plant.height.measurement.in.cm.CO_334.0000018&quot;</span>,</span>
+<span id="cb14-12"><a href="#cb14-12"></a>                      <span class="st">&quot;BRNHT1&quot;</span>,<span class="st">&quot;first.apical.branch.height.measurement.in.cm.CO_334.0000106&quot;</span>,</span>
+<span id="cb14-13"><a href="#cb14-13"></a>                      <span class="st">&quot;SHTWT&quot;</span>,<span class="st">&quot;fresh.shoot.weight.measurement.in.kg.per.plot.CO_334.0000016&quot;</span>,</span>
+<span id="cb14-14"><a href="#cb14-14"></a>                      <span class="co">#&quot;FYLD&quot;,&quot;fresh.root.yield.CO_334.0000013&quot;,</span></span>
+<span id="cb14-15"><a href="#cb14-15"></a>                      <span class="st">&quot;RTWT&quot;</span>,<span class="st">&quot;fresh.storage.root.weight.per.plot.CO_334.0000012&quot;</span>,</span>
+<span id="cb14-16"><a href="#cb14-16"></a>                      <span class="st">&quot;RTNO&quot;</span>,<span class="st">&quot;root.number.counting.CO_334.0000011&quot;</span>,</span>
+<span id="cb14-17"><a href="#cb14-17"></a>                      <span class="st">&quot;TCHART&quot;</span>,<span class="st">&quot;total.carotenoid.by.chart.1.8.CO_334.0000161&quot;</span>,</span>
+<span id="cb14-18"><a href="#cb14-18"></a>                      <span class="st">&quot;NOHAV&quot;</span>,<span class="st">&quot;plant.stands.harvested.counting.CO_334.0000010&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(traitabbrevs,<span class="dt">booktabs=</span><span class="ot">TRUE</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -854,37 +982,37 @@ table(dbdata$cassava.brown.streak.disease.root.severity.12.month.evaluation.CO_3
 </tr>
 </tbody>
 </table>
-<pre class="r"><code>dbdata&lt;-dbdata %&gt;% 
-  mutate(entryType=NA,
-         folderName=NA) </code></pre>
-<pre class="r"><code>#indata&lt;-dbdata; customColsToKeep = &quot;TrialType&quot;
-dbdata&lt;-renameAndSelectCols(traitabbrevs,indata=dbdata,customColsToKeep = &quot;TrialType&quot;)</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">entryType=</span><span class="ot">NA</span>,</span>
+<span id="cb16-3"><a href="#cb16-3"></a>         <span class="dt">folderName=</span><span class="ot">NA</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#indata&lt;-dbdata; customColsToKeep = &quot;TrialType&quot;</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>dbdata&lt;-<span class="kw">renameAndSelectCols</span>(traitabbrevs,<span class="dt">indata=</span>dbdata,<span class="dt">customColsToKeep =</span> <span class="st">&quot;TrialType&quot;</span>)</span></code></pre></div>
 </div>
 <div id="qc-trait-values" class="section level2">
 <h2>QC Trait values</h2>
-<pre class="r"><code>dbdata&lt;-dbdata %&gt;% 
-  mutate(CMD1S=ifelse(CMD1S&lt;1 | CMD1S&gt;5,NA,CMD1S),
-         CMD3S=ifelse(CMD3S&lt;1 | CMD3S&gt;5,NA,CMD3S),
-         CMD6S=ifelse(CMD6S&lt;1 | CMD1S&gt;5,NA,CMD6S),
-         CMD9S=ifelse(CMD9S&lt;1 | CMD1S&gt;5,NA,CMD9S),
-         CBSD3S=ifelse(CBSD3S&lt;1 | CBSD3S&gt;5,NA,CBSD3S),
-         CBSD6S=ifelse(CBSD6S&lt;1 | CBSD6S&gt;5,NA,CBSD6S),
-         CBSD9S=ifelse(CBSD9S&lt;1 | CBSD9S&gt;5,NA,CBSD9S),
-         CBSDRS=ifelse(CBSDRS&lt;1 | CBSDRS&gt;5,NA,CBSDRS),
-         DM=ifelse(DM&gt;100 | DM&lt;=0,NA,DM),
-         RTWT=ifelse(RTWT==0 | NOHAV==0 | is.na(NOHAV),NA,RTWT),
-         SHTWT=ifelse(SHTWT==0 | NOHAV==0 | is.na(NOHAV),NA,SHTWT),
-         RTNO=ifelse(RTNO==0 | NOHAV==0 | is.na(NOHAV),NA,RTNO),
-         NOHAV=ifelse(NOHAV==0,NA,NOHAV),
-         NOHAV=ifelse(NOHAV&gt;42,NA,NOHAV),
-         RTNO=ifelse(!RTNO %in% 1:10000,NA,RTNO),
-         TCHART=ifelse(TCHART %in% 1:8,TCHART,NA))</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CMD1S=</span><span class="kw">ifelse</span>(CMD1S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CMD1S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CMD1S),</span>
+<span id="cb18-3"><a href="#cb18-3"></a>         <span class="dt">CMD3S=</span><span class="kw">ifelse</span>(CMD3S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CMD3S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CMD3S),</span>
+<span id="cb18-4"><a href="#cb18-4"></a>         <span class="dt">CMD6S=</span><span class="kw">ifelse</span>(CMD6S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CMD1S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CMD6S),</span>
+<span id="cb18-5"><a href="#cb18-5"></a>         <span class="dt">CMD9S=</span><span class="kw">ifelse</span>(CMD9S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CMD1S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CMD9S),</span>
+<span id="cb18-6"><a href="#cb18-6"></a>         <span class="dt">CBSD3S=</span><span class="kw">ifelse</span>(CBSD3S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CBSD3S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CBSD3S),</span>
+<span id="cb18-7"><a href="#cb18-7"></a>         <span class="dt">CBSD6S=</span><span class="kw">ifelse</span>(CBSD6S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CBSD6S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CBSD6S),</span>
+<span id="cb18-8"><a href="#cb18-8"></a>         <span class="dt">CBSD9S=</span><span class="kw">ifelse</span>(CBSD9S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CBSD9S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CBSD9S),</span>
+<span id="cb18-9"><a href="#cb18-9"></a>         <span class="dt">CBSDRS=</span><span class="kw">ifelse</span>(CBSDRS<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CBSDRS<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CBSDRS),</span>
+<span id="cb18-10"><a href="#cb18-10"></a>         <span class="dt">DM=</span><span class="kw">ifelse</span>(DM<span class="op">&gt;</span><span class="dv">100</span> <span class="op">|</span><span class="st"> </span>DM<span class="op">&lt;=</span><span class="dv">0</span>,<span class="ot">NA</span>,DM),</span>
+<span id="cb18-11"><a href="#cb18-11"></a>         <span class="dt">RTWT=</span><span class="kw">ifelse</span>(RTWT<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>NOHAV<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span><span class="kw">is.na</span>(NOHAV),<span class="ot">NA</span>,RTWT),</span>
+<span id="cb18-12"><a href="#cb18-12"></a>         <span class="dt">SHTWT=</span><span class="kw">ifelse</span>(SHTWT<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>NOHAV<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span><span class="kw">is.na</span>(NOHAV),<span class="ot">NA</span>,SHTWT),</span>
+<span id="cb18-13"><a href="#cb18-13"></a>         <span class="dt">RTNO=</span><span class="kw">ifelse</span>(RTNO<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>NOHAV<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span><span class="kw">is.na</span>(NOHAV),<span class="ot">NA</span>,RTNO),</span>
+<span id="cb18-14"><a href="#cb18-14"></a>         <span class="dt">NOHAV=</span><span class="kw">ifelse</span>(NOHAV<span class="op">==</span><span class="dv">0</span>,<span class="ot">NA</span>,NOHAV),</span>
+<span id="cb18-15"><a href="#cb18-15"></a>         <span class="dt">NOHAV=</span><span class="kw">ifelse</span>(NOHAV<span class="op">&gt;</span><span class="dv">42</span>,<span class="ot">NA</span>,NOHAV),</span>
+<span id="cb18-16"><a href="#cb18-16"></a>         <span class="dt">RTNO=</span><span class="kw">ifelse</span>(<span class="op">!</span>RTNO <span class="op">%in%</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>,<span class="ot">NA</span>,RTNO),</span>
+<span id="cb18-17"><a href="#cb18-17"></a>         <span class="dt">TCHART=</span><span class="kw">ifelse</span>(TCHART <span class="op">%in%</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">8</span>,TCHART,<span class="ot">NA</span>))</span></code></pre></div>
 </div>
 <div id="harvest-index" class="section level2">
 <h2>Harvest Index</h2>
 <p>Compute harvest index <em>after</em> QC of RTWT and SHTWT above.</p>
-<pre class="r"><code>dbdata&lt;-dbdata %&gt;% 
-    mutate(HI=RTWT/(RTWT+SHTWT))</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">HI=</span>RTWT<span class="op">/</span>(RTWT<span class="op">+</span>SHTWT))</span></code></pre></div>
 </div>
 <div id="unit-area-traits" class="section level2">
 <h2>Unit area traits</h2>
@@ -894,41 +1022,41 @@ dbdata&lt;-renameAndSelectCols(traitabbrevs,indata=dbdata,customColsToKeep = &qu
 <li><strong>PlotSpacing:</strong> Area in <span class="math inline">\(m^2\)</span> per plant. plotWidth and plotLength metadata would hypothetically provide this info, but is missing for vast majority of trials. Therefore, use info from Fola.</li>
 <li><strong>maxNOHAV:</strong> Instead of ExpectedNOHAV. Need to know the max number of plants in the area harvested. For some trials, only the inner (or “net”) plot is harvested, therefore the PlantsPerPlot meta-variable will not suffice. Besides, the PlantsPerPlot information is missing for the vast majority of trials. Instead, use observed max(NOHAV) for each trial. We use this plus the PlotSpacing to calc. the area over which the RTWT was measured. During analysis, variation in the actual number of plants harvested will be accounted for.</li>
 </ol>
-<pre class="r"><code>dbdata&lt;-dbdata %&gt;% 
-  mutate(PlotSpacing=ifelse(programName!=&quot;IITA&quot;,1,
-                            ifelse(studyYear&lt;2013,1,
-                                   ifelse(TrialType %in% c(&quot;CET&quot;,&quot;GeneticGain&quot;,&quot;ExpCET&quot;),1,0.8))))
-maxNOHAV_byStudy&lt;-dbdata %&gt;% 
-  group_by(programName,locationName,studyYear,studyName,studyDesign) %&gt;% 
-  summarize(MaxNOHAV=max(NOHAV, na.rm=T)) %&gt;% 
-  ungroup() %&gt;% 
-  mutate(MaxNOHAV=ifelse(MaxNOHAV==&quot;-Inf&quot;,NA,MaxNOHAV))
-
-# I log transform yield traits 
-# to satisfy homoskedastic residuals assumption 
-# of linear mixed models
-dbdata&lt;-left_join(dbdata,maxNOHAV_byStudy) %&gt;% 
-  mutate(logFYLD=log(RTWT/(MaxNOHAV*PlotSpacing)*10),
-         logTOPYLD=log(SHTWT/(MaxNOHAV*PlotSpacing)*10),
-         PropNOHAV=NOHAV/MaxNOHAV) </code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">PlotSpacing=</span><span class="kw">ifelse</span>(programName<span class="op">!=</span><span class="st">&quot;IITA&quot;</span>,<span class="dv">1</span>,</span>
+<span id="cb20-3"><a href="#cb20-3"></a>                            <span class="kw">ifelse</span>(studyYear<span class="op">&lt;</span><span class="dv">2013</span>,<span class="dv">1</span>,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>                                   <span class="kw">ifelse</span>(TrialType <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;CET&quot;</span>,<span class="st">&quot;GeneticGain&quot;</span>,<span class="st">&quot;ExpCET&quot;</span>),<span class="dv">1</span>,<span class="fl">0.8</span>))))</span>
+<span id="cb20-5"><a href="#cb20-5"></a>maxNOHAV_byStudy&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="st">  </span><span class="kw">group_by</span>(programName,locationName,studyYear,studyName,studyDesign) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">MaxNOHAV=</span><span class="kw">max</span>(NOHAV, <span class="dt">na.rm=</span>T)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">MaxNOHAV=</span><span class="kw">ifelse</span>(MaxNOHAV<span class="op">==</span><span class="st">&quot;-Inf&quot;</span>,<span class="ot">NA</span>,MaxNOHAV))</span>
+<span id="cb20-10"><a href="#cb20-10"></a></span>
+<span id="cb20-11"><a href="#cb20-11"></a><span class="co"># I log transform yield traits </span></span>
+<span id="cb20-12"><a href="#cb20-12"></a><span class="co"># to satisfy homoskedastic residuals assumption </span></span>
+<span id="cb20-13"><a href="#cb20-13"></a><span class="co"># of linear mixed models</span></span>
+<span id="cb20-14"><a href="#cb20-14"></a>dbdata&lt;-<span class="kw">left_join</span>(dbdata,maxNOHAV_byStudy) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb20-15"><a href="#cb20-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">logFYLD=</span><span class="kw">log</span>(RTWT<span class="op">/</span>(MaxNOHAV<span class="op">*</span>PlotSpacing)<span class="op">*</span><span class="dv">10</span>),</span>
+<span id="cb20-16"><a href="#cb20-16"></a>         <span class="dt">logTOPYLD=</span><span class="kw">log</span>(SHTWT<span class="op">/</span>(MaxNOHAV<span class="op">*</span>PlotSpacing)<span class="op">*</span><span class="dv">10</span>),</span>
+<span id="cb20-17"><a href="#cb20-17"></a>         <span class="dt">PropNOHAV=</span>NOHAV<span class="op">/</span>MaxNOHAV) </span></code></pre></div>
 </div>
 <div id="season-wide-mean-cmds" class="section level2">
 <h2>Season-wide mean CMDS</h2>
-<pre class="r"><code>dbdata&lt;-dbdata %&gt;% 
-  mutate(MCMDS=rowMeans(.[,c(&quot;CMD1S&quot;,&quot;CMD3S&quot;,&quot;CMD6S&quot;,&quot;CMD9S&quot;)], na.rm = T),
-         MCBSDS=rowMeans(.[,c(&quot;CBSD3S&quot;,&quot;CBSD6S&quot;,&quot;CBSD9S&quot;)], na.rm = T)) %&gt;% 
-  select(-CMD1S,-CMD3S,-CMD6S,-CMD9S,-CBSD3S,-CBSD6S,-CBSD9S,-RTWT,-SHTWT)</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">MCMDS=</span><span class="kw">rowMeans</span>(.[,<span class="kw">c</span>(<span class="st">&quot;CMD1S&quot;</span>,<span class="st">&quot;CMD3S&quot;</span>,<span class="st">&quot;CMD6S&quot;</span>,<span class="st">&quot;CMD9S&quot;</span>)], <span class="dt">na.rm =</span> T),</span>
+<span id="cb21-3"><a href="#cb21-3"></a>         <span class="dt">MCBSDS=</span><span class="kw">rowMeans</span>(.[,<span class="kw">c</span>(<span class="st">&quot;CBSD3S&quot;</span>,<span class="st">&quot;CBSD6S&quot;</span>,<span class="st">&quot;CBSD9S&quot;</span>)], <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>CMD1S,<span class="op">-</span>CMD3S,<span class="op">-</span>CMD6S,<span class="op">-</span>CMD9S,<span class="op">-</span>CBSD3S,<span class="op">-</span>CBSD6S,<span class="op">-</span>CBSD9S,<span class="op">-</span>RTWT,<span class="op">-</span>SHTWT)</span></code></pre></div>
 </div>
 <div id="correct-few-location-names" class="section level2">
 <h2>Correct few location names</h2>
-<pre class="r"><code>dbdata %&lt;&gt;% 
-    mutate(locationName=ifelse(locationName==&quot;ibadan&quot;,&quot;Ibadan&quot;,locationName),
-           locationName=ifelse(locationName==&quot;bwanga&quot;,&quot;Bwanga&quot;,locationName),
-           locationName=ifelse(locationName==&quot;maruku&quot;,&quot;Maruku&quot;,locationName),
-           locationName=ifelse(locationName==&quot;kasulu&quot;,&quot;Kasulu&quot;,locationName),
-           locationName=ifelse(locationName==&quot;UKIRIGURU&quot;,&quot;Ukiriguru&quot;,locationName),
-           locationName=ifelse(grepl(&quot;NaCRRI&quot;,locationName),&quot;Namulonge&quot;,locationName))</code></pre>
-<pre class="r"><code>dbdata %&gt;% count(locationName) %&gt;% rmarkdown::paged_table()</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>dbdata <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">locationName=</span><span class="kw">ifelse</span>(locationName<span class="op">==</span><span class="st">&quot;ibadan&quot;</span>,<span class="st">&quot;Ibadan&quot;</span>,locationName),</span>
+<span id="cb22-3"><a href="#cb22-3"></a>           <span class="dt">locationName=</span><span class="kw">ifelse</span>(locationName<span class="op">==</span><span class="st">&quot;bwanga&quot;</span>,<span class="st">&quot;Bwanga&quot;</span>,locationName),</span>
+<span id="cb22-4"><a href="#cb22-4"></a>           <span class="dt">locationName=</span><span class="kw">ifelse</span>(locationName<span class="op">==</span><span class="st">&quot;maruku&quot;</span>,<span class="st">&quot;Maruku&quot;</span>,locationName),</span>
+<span id="cb22-5"><a href="#cb22-5"></a>           <span class="dt">locationName=</span><span class="kw">ifelse</span>(locationName<span class="op">==</span><span class="st">&quot;kasulu&quot;</span>,<span class="st">&quot;Kasulu&quot;</span>,locationName),</span>
+<span id="cb22-6"><a href="#cb22-6"></a>           <span class="dt">locationName=</span><span class="kw">ifelse</span>(locationName<span class="op">==</span><span class="st">&quot;UKIRIGURU&quot;</span>,<span class="st">&quot;Ukiriguru&quot;</span>,locationName),</span>
+<span id="cb22-7"><a href="#cb22-7"></a>           <span class="dt">locationName=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;NaCRRI&quot;</span>,locationName),<span class="st">&quot;Namulonge&quot;</span>,locationName))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">count</span>(locationName) <span class="op">%&gt;%</span><span class="st"> </span>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["locationName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Abuja","2":"1080"},{"1":"Ago-Owu","2":"2613"},{"1":"Arua","2":"1315"},{"1":"Buginyanya","2":"185"},{"1":"Bukemba","2":"54"},{"1":"Bunda","2":"874"},{"1":"Bundibugyo","2":"1785"},{"1":"Busia","2":"16"},{"1":"Bwanga","2":"516"},{"1":"Chambezi","2":"4978"},{"1":"Chato","2":"174"},{"1":"Chitala","2":"1063"},{"1":"Chitedze","2":"317"},{"1":"Cruz das Almas (BA)-UFRB-Candeal","2":"90"},{"1":"Cruz das Almas (BA)-UFRB-PP1","2":"626"},{"1":"Cruz Das Almas. Bahia, Brazil","2":"7873"},{"1":"Dourados","2":"1413"},{"1":"Guanambi","2":"437"},{"1":"Ibadan","2":"193452"},{"1":"Igbariam","2":"558"},{"1":"Ikenne","2":"36735"},{"1":"Ilorin","2":"204"},{"1":"Iresi","2":"54"},{"1":"Jos","2":"80"},{"1":"Kabangwe","2":"598"},{"1":"Kaberamaido","2":"430"},{"1":"Kakonko","2":"24"},{"1":"Kamuli","2":"3065"},{"1":"Kano","2":"8101"},{"1":"Kasese","2":"1030"},{"1":"Kasulu","2":"280"},{"1":"Kibaha","2":"525"},{"1":"Kiggumba","2":"670"},{"1":"Kisesa-Magu","2":"160"},{"1":"Kogi","2":"84"},{"1":"Laje (BA)-Novo Horizonte 2A","2":"1525"},{"1":"Laje (BA)-Novo Horizonte 2B","2":"57"},{"1":"Laje (BA)-Rio de Areia 1","2":"519"},{"1":"Lira","2":"2023"},{"1":"Lome","2":"192"},{"1":"Loro","2":"60"},{"1":"Mangabeira (BA)-IF Baiano","2":"57"},{"1":"Mansa","2":"90"},{"1":"Maruku","2":"486"},{"1":"Mityana","2":"612"},{"1":"Mkondezi","2":"36"},{"1":"Mkuranga","2":"128"},{"1":"Mokwa","2":"9713"},{"1":"Mubende","2":"331"},{"1":"Muhanga","2":"48"},{"1":"Naliendele","2":"273"},{"1":"Namulonge","2":"48912"},{"1":"Ngetta","2":"1159"},{"1":"Ngoma","2":"24"},{"1":"Njuli","2":"44"},{"1":"Nyagatare","2":"24"},{"1":"Onne","2":"1958"},{"1":"Otobi","2":"7843"},{"1":"Pallisa","2":"331"},{"1":"Rubirizi","2":"48"},{"1":"Rubona","2":"64"},{"1":"Serere","2":"9961"},{"1":"Tororo","2":"68"},{"1":"Ubiaja","2":"23217"},{"1":"Ukerewe","2":"666"},{"1":"Ukiriguru","2":"4387"},{"1":"Umudike","2":"27838"},{"1":"UNIVASF Trial","2":"1088"},{"1":"Uyo","2":"54"},{"1":"Zaria","2":"2166"},{"1":"Zombo","2":"3360"},{"1":"NA","2":"448"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -941,82 +1069,82 @@ dbdata&lt;-left_join(dbdata,maxNOHAV_byStudy) %&gt;%
 </div>
 <div id="write-cleaned-dataset" class="section level2">
 <h2>Write cleaned dataset</h2>
-<pre class="r"><code>saveRDS(dbdata,file=here::here(&quot;data&quot;,&quot;NextGen_CleanedTrialData_20200227.rds&quot;))</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">saveRDS</span>(dbdata,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;NextGen_CleanedTrialData_20200227.rds&quot;</span>))</span></code></pre></div>
 </div>
 <div id="detect-experimental-designs" class="section level1">
 <h1>Detect experimental designs</h1>
-<pre class="r"><code>rm(list=ls()); gc()</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>()); <span class="kw">gc</span>()</span></code></pre></div>
 <pre><code>            used   (Mb) gc trigger   (Mb) limit (Mb)  max used   (Mb)
-Ncells   2073168  110.8    4518647  241.4         NA   3542428  189.2
-Vcells 345642517 2637.1  929817465 7094.0     102400 929399938 7090.8</code></pre>
-<pre class="r"><code>dbdata&lt;-readRDS(here::here(&quot;data&quot;,&quot;NextGen_CleanedTrialData_20200227.rds&quot;))
-dbdata&lt;-dbdata %&gt;% 
-      # create explicitly nested experimental design variables 
-      # intended for use in downstream analyses
-      mutate(yearInLoc=paste0(programName,&quot;_&quot;,locationName,&quot;_&quot;,studyYear),
-             trialInLocYr=paste0(yearInLoc,&quot;_&quot;,studyName),
-             repInTrial=paste0(trialInLocYr,&quot;_&quot;,replicate),
-             blockInRep=paste0(repInTrial,&quot;_&quot;,blockNumber)) %&gt;% 
-      # Transform the dataset to a longer form
-      # traits stacked
-      pivot_longer(cols = c(DM,PLTHT,BRNHT1,RTNO,TCHART,logFYLD,logTOPYLD,MCMDS,CBSDRS,MCBSDS),
-                   names_to = &quot;Trait&quot;,
-                   values_to = &quot;Value&quot;) %&gt;% 
-      # tidy the data by grouping by trait-trial combination
-      nest(TrialData = -c(studyYear,programName,locationName,studyName,studyDesign,TrialType,Trait))</code></pre>
-<pre class="r"><code># Define complete blocks
-dbdata %&gt;% 
-    mutate(Nobs=map_dbl(TrialData,~nrow(.)),
-           MaxNOHAV=map_dbl(TrialData,~unique(.$MaxNOHAV)),
-           Nrep=map_dbl(TrialData,~length(unique(.$replicate))),
-           Nblock=map_dbl(TrialData,~length(unique(.$blockInRep))),
-           Nclone=map_dbl(TrialData,~length(unique(.$germplasmName))),
-           medObsPerClone=map_dbl(TrialData,~count(.,germplasmName) %$% round(median(n),1)), # median number of obs per clone
-           medObsPerRep=map_dbl(TrialData,~count(.,replicate) %$% round(median(n),1)), # median number of obs per replicate
-           CompleteBlocks=ifelse(Nrep&gt;1 &amp; medObsPerClone==Nrep &amp; Nobs!=Nrep,TRUE,FALSE), # Define complete block effects based on the &quot;replicate&quot; variable
-           CompleteBlocks=ifelse(Nrep&gt;1 &amp; medObsPerClone!=Nrep &amp; medObsPerClone&gt;1 &amp; Nobs!=Nrep,TRUE,CompleteBlocks)) -&gt; x # Additional trials with imperfect complete blocks
-x %&gt;% 
-    # Some complete blocks may only be represented by the &quot;blockNumber&quot; column
-    mutate(medBlocksPerClone=map_dbl(TrialData,~select(.,blockInRep,germplasmName) %&gt;% # median number of blockInRep per clone
-                                         distinct %&gt;% 
-                                         count(germplasmName) %$% 
-                                         round(median(n))),
-           # If CompleteBlocks==FALSE (complete blocks not detected based on replicate)
-           # and if more than half the clones are represented in more than one block based on the blockInRep variable
-           # Copy the blockInRep values into the repInTrial column
-           # Recompute Nrep
-           # and declare CompleteBlocks==TRUE
-           TrialData=ifelse(medBlocksPerClone&gt;1 &amp; CompleteBlocks==FALSE,map(TrialData,~mutate(.,repInTrial=blockInRep)),TrialData),  
-           Nrep=map_dbl(TrialData,~length(unique(.$repInTrial))),
-           CompleteBlocks=ifelse(medBlocksPerClone&gt;1 &amp; CompleteBlocks==FALSE,TRUE,CompleteBlocks)) -&gt; y
-
-# Define incomplete blocks
-y %&gt;% 
-    mutate(repsEqualBlocks=map_lgl(TrialData,~all(.$replicate==.$blockNumber)),  
-           NrepEqualNblock=ifelse(Nrep==Nblock,TRUE,FALSE),
-           medObsPerBlockInRep=map_dbl(TrialData,~count(.,blockInRep) %$% round(median(n),1))) -&gt; z
-z %&lt;&gt;% # Define complete blocked trials with nested sub-blocks
-    mutate(IncompleteBlocks=ifelse(CompleteBlocks==TRUE &amp; Nobs!=Nblock &amp; Nblock&gt;1 &amp; medObsPerBlockInRep&gt;1 &amp; NrepEqualNblock==FALSE,TRUE,FALSE))
-table(z$IncompleteBlocks)</code></pre>
+Ncells   2073133  110.8    4518618  241.4         NA   3542216  189.2
+Vcells 345642670 2637.1  928361823 7082.9     102400 928347094 7082.8</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>dbdata&lt;-<span class="kw">readRDS</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;NextGen_CleanedTrialData_20200227.rds&quot;</span>))</span>
+<span id="cb27-2"><a href="#cb27-2"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="st">      </span><span class="co"># create explicitly nested experimental design variables </span></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="st">      </span><span class="co"># intended for use in downstream analyses</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="st">      </span><span class="kw">mutate</span>(<span class="dt">yearInLoc=</span><span class="kw">paste0</span>(programName,<span class="st">&quot;_&quot;</span>,locationName,<span class="st">&quot;_&quot;</span>,studyYear),</span>
+<span id="cb27-6"><a href="#cb27-6"></a>             <span class="dt">trialInLocYr=</span><span class="kw">paste0</span>(yearInLoc,<span class="st">&quot;_&quot;</span>,studyName),</span>
+<span id="cb27-7"><a href="#cb27-7"></a>             <span class="dt">repInTrial=</span><span class="kw">paste0</span>(trialInLocYr,<span class="st">&quot;_&quot;</span>,replicate),</span>
+<span id="cb27-8"><a href="#cb27-8"></a>             <span class="dt">blockInRep=</span><span class="kw">paste0</span>(repInTrial,<span class="st">&quot;_&quot;</span>,blockNumber)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="st">      </span><span class="co"># Transform the dataset to a longer form</span></span>
+<span id="cb27-10"><a href="#cb27-10"></a><span class="st">      </span><span class="co"># traits stacked</span></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="st">      </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(DM,PLTHT,BRNHT1,RTNO,TCHART,logFYLD,logTOPYLD,MCMDS,CBSDRS,MCBSDS),</span>
+<span id="cb27-12"><a href="#cb27-12"></a>                   <span class="dt">names_to =</span> <span class="st">&quot;Trait&quot;</span>,</span>
+<span id="cb27-13"><a href="#cb27-13"></a>                   <span class="dt">values_to =</span> <span class="st">&quot;Value&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb27-14"><a href="#cb27-14"></a><span class="st">      </span><span class="co"># tidy the data by grouping by trait-trial combination</span></span>
+<span id="cb27-15"><a href="#cb27-15"></a><span class="st">      </span><span class="kw">nest</span>(<span class="dt">TrialData =</span> <span class="op">-</span><span class="kw">c</span>(studyYear,programName,locationName,studyName,studyDesign,TrialType,Trait))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Define complete blocks</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Nobs=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">nrow</span>(.)),</span>
+<span id="cb28-4"><a href="#cb28-4"></a>           <span class="dt">MaxNOHAV=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">unique</span>(.<span class="op">$</span>MaxNOHAV)),</span>
+<span id="cb28-5"><a href="#cb28-5"></a>           <span class="dt">Nrep=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">length</span>(<span class="kw">unique</span>(.<span class="op">$</span>replicate))),</span>
+<span id="cb28-6"><a href="#cb28-6"></a>           <span class="dt">Nblock=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">length</span>(<span class="kw">unique</span>(.<span class="op">$</span>blockInRep))),</span>
+<span id="cb28-7"><a href="#cb28-7"></a>           <span class="dt">Nclone=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">length</span>(<span class="kw">unique</span>(.<span class="op">$</span>germplasmName))),</span>
+<span id="cb28-8"><a href="#cb28-8"></a>           <span class="dt">medObsPerClone=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">count</span>(.,germplasmName) <span class="op">%$%</span><span class="st"> </span><span class="kw">round</span>(<span class="kw">median</span>(n),<span class="dv">1</span>)), <span class="co"># median number of obs per clone</span></span>
+<span id="cb28-9"><a href="#cb28-9"></a>           <span class="dt">medObsPerRep=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">count</span>(.,replicate) <span class="op">%$%</span><span class="st"> </span><span class="kw">round</span>(<span class="kw">median</span>(n),<span class="dv">1</span>)), <span class="co"># median number of obs per replicate</span></span>
+<span id="cb28-10"><a href="#cb28-10"></a>           <span class="dt">CompleteBlocks=</span><span class="kw">ifelse</span>(Nrep<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>medObsPerClone<span class="op">==</span>Nrep <span class="op">&amp;</span><span class="st"> </span>Nobs<span class="op">!=</span>Nrep,<span class="ot">TRUE</span>,<span class="ot">FALSE</span>), <span class="co"># Define complete block effects based on the &quot;replicate&quot; variable</span></span>
+<span id="cb28-11"><a href="#cb28-11"></a>           <span class="dt">CompleteBlocks=</span><span class="kw">ifelse</span>(Nrep<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>medObsPerClone<span class="op">!=</span>Nrep <span class="op">&amp;</span><span class="st"> </span>medObsPerClone<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Nobs<span class="op">!=</span>Nrep,<span class="ot">TRUE</span>,CompleteBlocks)) -&gt;<span class="st"> </span>x <span class="co"># Additional trials with imperfect complete blocks</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a>x <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb28-13"><a href="#cb28-13"></a><span class="st">    </span><span class="co"># Some complete blocks may only be represented by the &quot;blockNumber&quot; column</span></span>
+<span id="cb28-14"><a href="#cb28-14"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">medBlocksPerClone=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">select</span>(.,blockInRep,germplasmName) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># median number of blockInRep per clone</span></span>
+<span id="cb28-15"><a href="#cb28-15"></a><span class="st">                                         </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb28-16"><a href="#cb28-16"></a><span class="st">                                         </span><span class="kw">count</span>(germplasmName) <span class="op">%$%</span><span class="st"> </span></span>
+<span id="cb28-17"><a href="#cb28-17"></a><span class="st">                                         </span><span class="kw">round</span>(<span class="kw">median</span>(n))),</span>
+<span id="cb28-18"><a href="#cb28-18"></a>           <span class="co"># If CompleteBlocks==FALSE (complete blocks not detected based on replicate)</span></span>
+<span id="cb28-19"><a href="#cb28-19"></a>           <span class="co"># and if more than half the clones are represented in more than one block based on the blockInRep variable</span></span>
+<span id="cb28-20"><a href="#cb28-20"></a>           <span class="co"># Copy the blockInRep values into the repInTrial column</span></span>
+<span id="cb28-21"><a href="#cb28-21"></a>           <span class="co"># Recompute Nrep</span></span>
+<span id="cb28-22"><a href="#cb28-22"></a>           <span class="co"># and declare CompleteBlocks==TRUE</span></span>
+<span id="cb28-23"><a href="#cb28-23"></a>           <span class="dt">TrialData=</span><span class="kw">ifelse</span>(medBlocksPerClone<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>CompleteBlocks<span class="op">==</span><span class="ot">FALSE</span>,<span class="kw">map</span>(TrialData,<span class="op">~</span><span class="kw">mutate</span>(.,<span class="dt">repInTrial=</span>blockInRep)),TrialData),  </span>
+<span id="cb28-24"><a href="#cb28-24"></a>           <span class="dt">Nrep=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">length</span>(<span class="kw">unique</span>(.<span class="op">$</span>repInTrial))),</span>
+<span id="cb28-25"><a href="#cb28-25"></a>           <span class="dt">CompleteBlocks=</span><span class="kw">ifelse</span>(medBlocksPerClone<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>CompleteBlocks<span class="op">==</span><span class="ot">FALSE</span>,<span class="ot">TRUE</span>,CompleteBlocks)) -&gt;<span class="st"> </span>y</span>
+<span id="cb28-26"><a href="#cb28-26"></a></span>
+<span id="cb28-27"><a href="#cb28-27"></a><span class="co"># Define incomplete blocks</span></span>
+<span id="cb28-28"><a href="#cb28-28"></a>y <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb28-29"><a href="#cb28-29"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">repsEqualBlocks=</span><span class="kw">map_lgl</span>(TrialData,<span class="op">~</span><span class="kw">all</span>(.<span class="op">$</span>replicate<span class="op">==</span>.<span class="op">$</span>blockNumber)),  </span>
+<span id="cb28-30"><a href="#cb28-30"></a>           <span class="dt">NrepEqualNblock=</span><span class="kw">ifelse</span>(Nrep<span class="op">==</span>Nblock,<span class="ot">TRUE</span>,<span class="ot">FALSE</span>),</span>
+<span id="cb28-31"><a href="#cb28-31"></a>           <span class="dt">medObsPerBlockInRep=</span><span class="kw">map_dbl</span>(TrialData,<span class="op">~</span><span class="kw">count</span>(.,blockInRep) <span class="op">%$%</span><span class="st"> </span><span class="kw">round</span>(<span class="kw">median</span>(n),<span class="dv">1</span>))) -&gt;<span class="st"> </span>z</span>
+<span id="cb28-32"><a href="#cb28-32"></a>z <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="co"># Define complete blocked trials with nested sub-blocks</span></span>
+<span id="cb28-33"><a href="#cb28-33"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">IncompleteBlocks=</span><span class="kw">ifelse</span>(CompleteBlocks<span class="op">==</span><span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span>Nobs<span class="op">!=</span>Nblock <span class="op">&amp;</span><span class="st"> </span>Nblock<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>medObsPerBlockInRep<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>NrepEqualNblock<span class="op">==</span><span class="ot">FALSE</span>,<span class="ot">TRUE</span>,<span class="ot">FALSE</span>))</span>
+<span id="cb28-34"><a href="#cb28-34"></a><span class="kw">table</span>(z<span class="op">$</span>IncompleteBlocks)</span></code></pre></div>
 <pre><code>
 FALSE  TRUE 
 11030  3620 </code></pre>
-<pre class="r"><code>z %&lt;&gt;% # Define clearly unreplicated (CompleteBlocks==FALSE &amp; Nrep==1) trials with nested sub-blocks
-    mutate(IncompleteBlocks=ifelse(CompleteBlocks==FALSE &amp; Nobs!=Nblock &amp; Nblock&gt;1 &amp; medObsPerBlockInRep&gt;1 &amp; Nrep==1,TRUE,IncompleteBlocks))
-table(z$IncompleteBlocks)</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>z <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="co"># Define clearly unreplicated (CompleteBlocks==FALSE &amp; Nrep==1) trials with nested sub-blocks</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">IncompleteBlocks=</span><span class="kw">ifelse</span>(CompleteBlocks<span class="op">==</span><span class="ot">FALSE</span> <span class="op">&amp;</span><span class="st"> </span>Nobs<span class="op">!=</span>Nblock <span class="op">&amp;</span><span class="st"> </span>Nblock<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>medObsPerBlockInRep<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Nrep<span class="op">==</span><span class="dv">1</span>,<span class="ot">TRUE</span>,IncompleteBlocks))</span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="kw">table</span>(z<span class="op">$</span>IncompleteBlocks)</span></code></pre></div>
 <pre><code>
 FALSE  TRUE 
  8850  5800 </code></pre>
-<pre class="r"><code>z %&lt;&gt;% # Define additional trials with incomplete blocks (blockInRep) where CompleteBlocks==FALSE but Nrep&gt;1 and Nrep==Block
-        mutate(IncompleteBlocks=ifelse(CompleteBlocks==FALSE &amp; IncompleteBlocks==FALSE &amp; 
-                                           Nobs!=Nblock &amp; Nblock&gt;1 &amp;  Nobs!=Nrep &amp; 
-                                           medObsPerBlockInRep&gt;1 &amp; Nrep&gt;1 &amp; NrepEqualNblock==TRUE,TRUE,IncompleteBlocks))
-z %&lt;&gt;% # Last few cases (2 trials actually) where Nrep&gt;1 and Nblock&gt;1 and Nrep!=Nblock but CompleteBlocks==FALSE
-        mutate(IncompleteBlocks=ifelse(CompleteBlocks==FALSE &amp; IncompleteBlocks==FALSE &amp;
-                                           Nobs!=Nblock &amp; Nobs!=Nrep &amp; 
-                                           medObsPerBlockInRep&gt;1 &amp; Nrep&gt;1,TRUE,IncompleteBlocks))</code></pre>
-<pre class="r"><code>z %&gt;% 
-    count(programName,CompleteBlocks,IncompleteBlocks) %&gt;% spread(IncompleteBlocks,n)</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>z <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="co"># Define additional trials with incomplete blocks (blockInRep) where CompleteBlocks==FALSE but Nrep&gt;1 and Nrep==Block</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">IncompleteBlocks=</span><span class="kw">ifelse</span>(CompleteBlocks<span class="op">==</span><span class="ot">FALSE</span> <span class="op">&amp;</span><span class="st"> </span>IncompleteBlocks<span class="op">==</span><span class="ot">FALSE</span> <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb32-3"><a href="#cb32-3"></a><span class="st">                                           </span>Nobs<span class="op">!=</span>Nblock <span class="op">&amp;</span><span class="st"> </span>Nblock<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st">  </span>Nobs<span class="op">!=</span>Nrep <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb32-4"><a href="#cb32-4"></a><span class="st">                                           </span>medObsPerBlockInRep<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Nrep<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>NrepEqualNblock<span class="op">==</span><span class="ot">TRUE</span>,<span class="ot">TRUE</span>,IncompleteBlocks))</span>
+<span id="cb32-5"><a href="#cb32-5"></a>z <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="co"># Last few cases (2 trials actually) where Nrep&gt;1 and Nblock&gt;1 and Nrep!=Nblock but CompleteBlocks==FALSE</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">IncompleteBlocks=</span><span class="kw">ifelse</span>(CompleteBlocks<span class="op">==</span><span class="ot">FALSE</span> <span class="op">&amp;</span><span class="st"> </span>IncompleteBlocks<span class="op">==</span><span class="ot">FALSE</span> <span class="op">&amp;</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a><span class="st">                                           </span>Nobs<span class="op">!=</span>Nblock <span class="op">&amp;</span><span class="st"> </span>Nobs<span class="op">!=</span>Nrep <span class="op">&amp;</span><span class="st"> </span></span>
+<span id="cb32-8"><a href="#cb32-8"></a><span class="st">                                           </span>medObsPerBlockInRep<span class="op">&gt;</span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Nrep<span class="op">&gt;</span><span class="dv">1</span>,<span class="ot">TRUE</span>,IncompleteBlocks))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>z <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="st">    </span><span class="kw">count</span>(programName,CompleteBlocks,IncompleteBlocks) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">spread</span>(IncompleteBlocks,n)</span></code></pre></div>
 <pre><code># A tibble: 10 x 4
    programName CompleteBlocks `FALSE` `TRUE`
    &lt;chr&gt;       &lt;lgl&gt;            &lt;int&gt;  &lt;int&gt;
@@ -1032,8 +1160,8 @@ z %&lt;&gt;% # Last few cases (2 trials actually) where Nrep&gt;1 and Nblock&gt;
 10 TARI        TRUE               830    510</code></pre>
 <div id="write-designs-detected-dataset" class="section level2">
 <h2>Write designs-detected dataset</h2>
-<pre class="r"><code>saveRDS(z,file=here::here(&quot;data&quot;,&quot;NextGen_ExptDesignsDetected_20200227.rds&quot;))
-colnames(z)</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">saveRDS</span>(z,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;NextGen_ExptDesignsDetected_20200227.rds&quot;</span>))</span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="kw">colnames</span>(z)</span></code></pre></div>
 <pre><code> [1] &quot;studyYear&quot;           &quot;programName&quot;         &quot;locationName&quot;       
  [4] &quot;studyName&quot;           &quot;studyDesign&quot;         &quot;TrialType&quot;          
  [7] &quot;Trait&quot;               &quot;TrialData&quot;           &quot;Nobs&quot;               
@@ -1048,7 +1176,7 @@ colnames(z)</code></pre>
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<pre class="r"><code>sessionInfo()</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
 <pre><code>R version 3.6.1 (2019-07-05)
 Platform: x86_64-apple-darwin15.6.0 (64-bit)
 Running under: macOS Mojave 10.14.6
