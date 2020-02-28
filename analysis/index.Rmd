@@ -8,4 +8,4 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+Analysis to compute quality metrics on NGC trials from DB for presentation and NGC 2020 project meeting.
