@@ -1,0 +1,224 @@
+---
+title: "Quality Metrics"
+author: "wolfemd"
+date: "`r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
+```
+
+```{r}
+library(tidyverse); library(magrittr);
+trials<-readRDS(file=here::here("output","NextGen_ModelsFit_20200228.rds"))
+```
+
+## How much data?
+
+Number of trials per program
+```{r}
+trials %>% 
+  select(programName,locationName,studyYear,studyName,studyDesign,TrialType) %>% 
+  distinct %>% 
+  count(programName) %>% 
+  knitr::kable(.,booktabs=TRUE)
+```
+
+Number of plots per program
+```{r}
+trials %>% 
+  select(-modelOutput) %>% 
+  unnest(TrialData,.name_repair = "unique") %>% 
+  select(programName,observationUnitName) %>% 
+  distinct %>% 
+  count(programName) %>% 
+  knitr::kable(.,booktabs=TRUE)
+```
+
+Number of accessions per program
+```{r}
+trials %>% 
+  select(-modelOutput) %>% 
+  unnest(TrialData,.name_repair = "unique") %>% 
+  filter(!is.na(Value)) %>% 
+  select(programName,germplasmName) %>% 
+  distinct %>% 
+  count(programName) %>%
+  knitr::kable(.,booktabs=TRUE)
+```
+
+Trial designs used? 
+
+Please review the code below. Expresses the proportion of trait-trial data chunks for each breeding program where the stated **studyDesign** matches _my (not necessarily correct) expectations_ of which **studyDesign** should have complete vs. incomplete blocks. 
+```{r}
+trials %>% 
+  select(-modelOutput) %>% 
+  unnest(TrialData,.name_repair = "unique") %>% 
+  select(programName,studyName,studyDesign,Trait,CompleteBlocks,IncompleteBlocks) %>% 
+  distinct %>% 
+  mutate(StatedDesignMatches=ifelse(studyDesign %in% c("RCBD","CRD") & CompleteBlocks==TRUE,TRUE,
+                                      ifelse(studyDesign %in% c("Alpha","Augmented") & 
+                                                 IncompleteBlocks==TRUE,TRUE,FALSE))) %>%
+    count(programName,studyDesign,StatedDesignMatches) %>% 
+    spread(StatedDesignMatches,n) %>% 
+    mutate(`TRUE`=ifelse(is.na(`TRUE`),0,`TRUE`),
+           `FALSE`=ifelse(is.na(`FALSE`),0,`FALSE`),
+           PropDesignCorrect=round(`TRUE`/(`TRUE`+`FALSE`),2),
+           PropDesignCorrect=ifelse(is.na(PropDesignCorrect),0,PropDesignCorrect)) %>% 
+    select(-`TRUE`,-`FALSE`) %>% 
+    spread(studyDesign,PropDesignCorrect) %>% 
+    knitr::kable(.,booktabs=TRUE)
+```
+
+Plot sizes (based on maxNOHAV)
+```{r}
+library(cowplot)
+trials %>% 
+  select(-modelOutput) %>% 
+  unnest(TrialData,.name_repair = "unique") %>% 
+  select(programName,locationName,studyYear,studyName,studyDesign,TrialType,MaxNOHAV) %>% 
+  distinct %>% 
+  ggplot(.,aes(x=programName,fill=programName,y=MaxNOHAV)) + 
+  geom_boxplot() + 
+  labs(y="Plot Size\n(Max Number Harvested)")
+```
+
+## Percentage metadata
+```{r}
+trials %>% 
+  select(-modelOutput) %>% 
+  unnest(TrialData,.name_repair = "unique") %>% 
+  select(programName,locationName,studyYear,studyName,studyDesign,TrialType,plotLength,plotWidth,fieldSize,plantsPerPlot) %>% 
+  distinct %>% 
+  filter(!is.na(plotLength) | !is.na(plotWidth) | !is.na(fieldSize) | !is.na(plantsPerPlot)) %>% 
+  count(programName,studyYear) %>% 
+  rename(Nwithmeta=n) %>% 
+  left_join(trials %>% 
+              select(-modelOutput) %>% 
+              unnest(TrialData,.name_repair = "unique") %>% 
+              select(programName,locationName,studyYear,studyName,studyDesign,TrialType,
+                     plotLength,plotWidth,fieldSize,plantsPerPlot) %>% 
+              distinct %>% 
+              count(programName,studyYear)) %>% 
+  mutate(PropWithMeta=Nwithmeta/n) %>% 
+  ggplot(.,aes(x=studyYear,y=PropWithMeta,color=programName,group=programName)) + 
+  geom_point() + 
+  geom_line() + 
+  labs(title="Trials with Plot Size Meta-data\n(necessary to calc. FYLD)")
+```
+
+```{r}
+trials %>% 
+  select(-modelOutput) %>% 
+  unnest(TrialData,.name_repair = "unique") %>% 
+  select(programName,locationName,studyYear,studyName,studyDesign,TrialType,rowNumber,colNumber) %>% 
+  distinct %>% 
+  filter(!is.na(rowNumber) | !is.na(colNumber)) %>% 
+  select(-rowNumber,-colNumber) %>% 
+  distinct %>%  
+  count(programName,studyYear) %>% 
+  rename(Nwithmeta=n) %>% 
+  left_join(trials %>% 
+              select(-modelOutput) %>% 
+              unnest(TrialData,.name_repair = "unique") %>% 
+              select(programName,locationName,studyYear,studyName,studyDesign,TrialType,
+                     plotLength,plotWidth,fieldSize,plantsPerPlot) %>% 
+              distinct %>% 
+              count(programName,studyYear)) %>% 
+  mutate(PropWithMeta=Nwithmeta/n) %>% 
+  ggplot(.,aes(x=studyYear,y=PropWithMeta,color=programName,group=programName)) + 
+  geom_point() + 
+  geom_line() + 
+  labs(title="Trials with Spatial Information\n(row/col meta-data)")
+```
+
+## Data quality 
+
+### Percent missing
+```{r fig.width=12, fig.height=6}
+dbdata<-readRDS(here::here("data","NextGen_CleanedTrialData_20200227.rds"))
+
+missingness<-dbdata %>% 
+  group_by(programName,locationName,studyYear,studyName,studyDesign,TrialType) %>% 
+    nest() %>% 
+    mutate(propNA=map(data,function(data){
+        out<-data %>%
+            summarize_at(vars(logFYLD,logTOPYLD),funs(propMiss=round(sum(is.na(.))/length(.),2))) %>% 
+            mutate(propNA_yield=round(rowMeans(.),2)) %>% 
+            select(propNA_yield) %>% 
+            bind_cols(data %>% 
+                          summarize_at(vars(DM),funs(propNA_dmc=round(sum(is.na(.))/length(.),2)))) %>% 
+            bind_cols(data %>% 
+                          summarize_at(vars(MCMDS),funs(propNA_cmd=round(sum(is.na(.))/length(.),2)))) %>% 
+            bind_cols(data %>% 
+                          summarize_at(vars(CBSDRS,MCBSDS),funs(propNA_cbsd=round(sum(is.na(.))/length(.),2))) %>% 
+                          mutate(propNA_cbsd=round(rowMeans(.),2)) %>% 
+                          select(propNA_cbsd))
+        return(out) })) %>% 
+    unnest(propNA)
+missingness %<>% select(-data) 
+missingness %>% 
+    #mutate(programName=factor(programName,levels=c("Embrapa","IITA","NRCRI","NaCRRI","TARI"))) %>% 
+    filter(propNA_yield<1 | propNA_dmc<1 | propNA_cmd<1 | propNA_cbsd<1) %>% 
+    gather(Trait,Missingness,contains("propNA")) %>% 
+    mutate(Trait=gsub("propNA_","",Trait),
+           Trait=toupper(Trait)) %>% 
+    ggplot(.,aes(x=programName,fill=programName,y=Missingness)) + 
+    geom_boxplot() + 
+    facet_grid(~Trait) + 
+    theme(axis.text.x = element_text(angle = 90))
+```
+
+### Error variance
+```{r, fig.width=12, fig.height=6}
+trials %>% 
+  select(-TrialData) %>% 
+  unnest(modelOutput,.name_repair = "unique") %>% 
+  filter(!is.na(logLik)) %>% 
+  unnest(VarComps) %>% 
+  select(programName,locationName,studyYear,studyName,TrialType,Trait,MaxNOHAV,VarComp,VarEst) %>% 
+  spread(VarComp,VarEst) %>% 
+  filter(Trait %in% c("CBSDRS","MCMDS","logFYLD","logTOPYLD","DM")) %>% 
+  mutate(PlotSize=ifelse(MaxNOHAV<=5,"0 - 5",
+                         ifelse(MaxNOHAV>5 & MaxNOHAV<=10,"6 - 10",
+                                ifelse(MaxNOHAV>10 & MaxNOHAV<=20,"11 - 20","20 - 40"))),
+         PlotSize=factor(PlotSize,levels=c("0 - 5","6 - 10","11 - 20","20 - 40"))) %>% 
+  mutate(Residual=ifelse(Trait=="DM" & Residual>100,NA,Residual)) %>%
+  filter(!is.na(PlotSize)) %>% 
+  ggplot(.,aes(x=PlotSize,y=Residual,fill=PlotSize)) + 
+  geom_boxplot() + 
+  #facet_grid(Trait~programName,scales='free') + 
+  facet_wrap(~Trait, scales='free', nrow=1) + 
+  theme(axis.text.x = element_text(angle = 90))
+```
+
+### Outliers
+```{r, fig.width=12, fig.height=6}
+trials %>% 
+  select(-TrialData) %>% 
+  unnest(modelOutput,.name_repair = "unique") %>% 
+  filter(!is.na(logLik)) %>%  
+  mutate(NoutliersR1=map_dbl(outliers,~length(.))) %>% 
+  unnest(VarComps) %>% 
+  select(programName,locationName,studyYear,studyName,TrialType,Trait,
+         Nobs,MaxNOHAV,NoutliersR1,VarComp,VarEst) %>% 
+  spread(VarComp,VarEst) %>% 
+  filter(Trait %in% c("CBSDRS","MCMDS","logFYLD","logTOPYLD","DM")) %>% 
+  mutate(PlotSize=ifelse(MaxNOHAV<=5,"0 - 5",
+                         ifelse(MaxNOHAV>5 & MaxNOHAV<=10,"6 - 10",
+                                ifelse(MaxNOHAV>10 & MaxNOHAV<=20,"11 - 20","20 - 40"))),
+         PlotSize=factor(PlotSize,levels=c("0 - 5","6 - 10","11 - 20","20 - 40"))) %>% 
+  #    mutate(Residual=ifelse(Trait=="DM" & Residual>100,NA,Residual)) %>%
+  filter(!is.na(PlotSize)) %>% 
+  mutate(NoutliersExpected=Nobs*0.005,
+         Outliers_obsVexp=NoutliersR1-NoutliersExpected) %>%     
+  #ggplot(.,aes(x=PlotSize,y=Outliers_obsVexp,fill=PlotSize)) + 
+  ggplot(.,aes(x=programName,y=Outliers_obsVexp,fill=programName)) + 
+  geom_boxplot() + geom_hline(yintercept = 0,color='red') + 
+  facet_wrap(~Trait, scales='free', nrow=1) + 
+  theme(axis.text.x = element_text(angle = 90)) + 
+  labs(y = "Noutliers\nLess Than Expected <--> More Than Expected")
+```

@@ -1,0 +1,84 @@
+---
+title: "Trial level curation"
+author: "wolfemd"
+date: "`r Sys.Date()`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
+```
+
+```{r}
+library(tidyverse); library(magrittr); 
+trials<-readRDS(here::here("data","NextGen_ExptDesignsDetected_20200227.rds"))
+```
+```{r}
+trials %<>% 
+    mutate(lmerFormula="Value ~ (1|germplasmName)",
+           lmerFormula=ifelse(Trait %in% c("logRTNO","logFYLD","logTOPYLD"),paste0(lmerFormula," + PropNOHAV"),lmerFormula),
+           lmerFormula=ifelse(CompleteBlocks==TRUE,paste0(lmerFormula," + (1|repInTrial)"),lmerFormula),
+           lmerFormula=ifelse(IncompleteBlocks==TRUE,paste0(lmerFormula," + (1|blockInRep)"),lmerFormula))
+```
+
+```{r}
+trials %>% 
+  count(programName,lmerFormula) %>% 
+  spread(programName,n)
+```
+
+Function to fit lmerModel for each trial
+
+```{r, eval=F}
+# TrialData<-trials$TrialData[[22]]
+# lmerFormula<-trials$lmerFormula[[22]];lmerFormula
+# summary(trials$TrialData[[22]]$Value)
+# rm(TrialData,lmerFormula)
+# rm(out,outModel,varcomps,outdata,outliers,possibly_lmer)
+```
+
+```{r}
+fitModel<-function(TrialData,lmerFormula){ 
+    require(lme4); require(broom)
+    possibly_lmer<-possibly(lmer, otherwise = NA)
+    outModel<-possibly_lmer(formula = as.formula(lmerFormula), 
+                            data = TrialData)
+    if(!is.na(outModel)){
+    
+        outliers<-which(abs(rstudent(outModel))>3.3)
+        
+        if(length(outliers>0)){ 
+          outModel<-possibly_lmer(formula = as.formula(lmerFormula), 
+                                  data = TrialData[-outliers,])
+        }
+        if(!is.na(outModel)){
+          modelStats<-glance(outModel) %>% 
+            select(logLik,AIC)
+          
+          varcomps<-VarCorr(outModel) %>% 
+            as.data.frame %>% 
+            select(grp,vcov) %>% 
+            rename(VarComp=grp,VarEst=vcov)
+          
+          out<-modelStats %>% 
+            mutate(VarComps=list(varcomps),
+                   outliers=list(outliers)) 
+          } else { out<-tibble(logLik=NA,AIC=NA,VarComps=list(NA),outliers=list(NA)) }
+        } else { 
+          out<-tibble(logLik=NA,AIC=NA,VarComps=list(NA),outliers=list(NA)) }
+        return(out) }
+```
+Run the function on each trial
+```{r, eval=F}
+trials %<>%
+  mutate(modelOutput=map2(TrialData,lmerFormula,fitModel))
+```
+Output file
+```{r, eval=F}
+saveRDS(trials,file=here::here("output","NextGen_ModelsFit_20200228.rds"))
+```
+
+
+
