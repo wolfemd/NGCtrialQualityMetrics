@@ -5,6 +5,12 @@ navbar:
   left:
   - text: Home
     href: index.html
+  - text: Prep DB data
+    href: prepDBdata.html
+  - text: Trial level curation
+    href: trialLevelCuration.html
+  - text: Compute quality metrics
+    href: computeMetrics.html
   - text: About
     href: about.html
   - text: License
@@ -13,5 +19,8 @@ output:
   workflowr::wflow_html:
     toc: yes
     toc_float: yes
-    theme: cosmo
-    highlight: textmate
+    toc_depth: 3
+    collapsed: no
+    number_sections: no
+    theme: darkly
+    highlight: tango
